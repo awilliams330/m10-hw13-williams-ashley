@@ -1,10 +1,10 @@
 // capture references to important DOM elements
-var weatherContainer = document.getElementById('weather');
-var formEl = document.querySelector('form');
-var inputEl = document.querySelector('input');
+const weatherContainer = document.getElementById('weather');
+const formEl = document.querySelector('form');
+const inputEl = document.querySelector('input');
 
 
-formEl.onsubmit = function(e) {
+formEl.onsubmit = (e) => {
   // prevent the page from refreshing
   e.preventDefault();
 
