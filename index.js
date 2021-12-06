@@ -38,16 +38,16 @@ async function getWeather(query) {
     throw new Error('location not found');
   // create weather icon URL
   var iconUrl = 'https://openweathermap.org/img/wn/' +
-    data.weather[0].icon +
+    weather.icon +
     '@2x.png';
-  var description = weather[0].description;
+  var description = weather.description;
   var actualTemp = main.temp; 
   var feelsLikeTemp = main.feels_like;
   var place = `${name}, ${data.sys.country}`; //name is crossed out if I remove data here
   // create JS date object from Unix timestamp
-  var updatedAt = new Date(data.dt * 1000);
+  var updatedAt = new Date(dt * 1000);
   return {
-    coords: data.coord.lat + ',' + data.coord.lon,
+    coords: coord.lat + ',' + coord.lon,
     description: description,
     iconUrl: iconUrl,
     actualTemp: actualTemp,
