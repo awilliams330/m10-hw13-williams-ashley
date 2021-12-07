@@ -32,7 +32,7 @@ async function getWeather(query) {
     query +
     '&units=imperial&appid=6efff70fe1477748e31c17d1c504635f'
   );
-  const {data: {cod, weather, main} }= await res.json();
+  const {data: {cod, coord, dt, main, name, sys, weather } } = await res.json();
   // location not found, throw error/reject promise
   if (cod === "404")
     throw new Error('location not found');
@@ -41,13 +41,13 @@ async function getWeather(query) {
     weather.icon +
     '@2x.png';
   var description = weather.description;
-  var actualTemp = main.temp; 
+  var actualTemp = main.temp;
   var feelsLikeTemp = main.feels_like;
-  var place = `${name}, ${data.sys.country}`; //name is crossed out if I remove data here
+  var place = `${name}, ${sys.country}`;
   // create JS date object from Unix timestamp
   var updatedAt = new Date(dt * 1000);
   return {
-    coords: coord.lat + ',' + coord.lon,
+    coords: `${coord.lat},${coord.lon}`,
     description: description,
     iconUrl: iconUrl,
     actualTemp: actualTemp,
