@@ -32,7 +32,7 @@ async function getWeather(query) {
     query +
     '&units=imperial&appid=6efff70fe1477748e31c17d1c504635f'
   );
-  const {data: {cod, coord, dt, main, name, sys, weather } } = await res.json();
+  const { data: [ cod, coord, dt, main, name, sys, weather ] } = await res.json();
   // location not found, throw error/reject promise
   if (cod === "404")
     throw new Error('location not found');
